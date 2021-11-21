@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1052649583416",
+    "project_id": "divergent-team-mobile-apps",
+    "storage_bucket": "divergent-team-mobile-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052649583416:android:20972167203d8a3da587cd",
+        "android_client_info": {
+          "package_name": "com.andriawan.divergent_mobile_apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052649583416-ci9prgie24e27vjdmtafhj7on2ofi815.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andriawan.divergent_mobile_apps",
+            "certificate_hash": "1b28a3fa95ebe1fb9bd413bf69ee63c3f6e43850"
+          }
+        },
+        {
+          "client_id": "1052649583416-l5o6hm323msvfctli27hsghj5rrp0qpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkyL4EJJhDHA1r8Os7Zfm6v0xAJQGM6KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052649583416-l5o6hm323msvfctli27hsghj5rrp0qpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
