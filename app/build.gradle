@@ -22,9 +22,23 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "variant"
+    productFlavors {
+        dev {
+            dimension "variant"
+            buildConfigField "String", "BASE_URL", "\"https://divergent-team.andriawan24.xyz/api_v1/\""
+        }
+    }
+
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,6 +51,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -54,6 +69,7 @@ dependencies {
 
     // Room component
     implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
@@ -103,6 +119,9 @@ dependencies {
 
     // Timber for better logging
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Fancy Toast
+    implementation 'io.github.shashank02051997:FancyToast:2.0.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
