@@ -1,4 +1,4 @@
-package com.andriawan.divergent_mobile_apps.models.login.response
+package com.andriawan.divergent_mobile_apps.models.auth.response
 
 data class User(
     val created_at: Any,

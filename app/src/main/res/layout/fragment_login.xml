@@ -7,12 +7,16 @@
         <variable
             name="listener"
             type="com.andriawan.divergent_mobile_apps.ui.login.LoginListener" />
+        <variable
+            name="viewModel"
+            type="com.andriawan.divergent_mobile_apps.ui.login.LoginViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:background="@color/custom_color_background"
         tools:context=".ui.login.LoginFragment">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -65,7 +69,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:orientation="vertical">
 
@@ -86,8 +90,11 @@
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
-                        app:boxStrokeColor="@color/custom_color_subtle_grey"
+                        app:boxStrokeColor="@color/custom_color_purple"
                         app:boxBackgroundMode="outline"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.email}"
+                        app:errorTextAppearance="@style/TextErrorAppearance"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -107,7 +114,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginHorizontal="20dp"
                     android:orientation="vertical">
 
@@ -128,7 +135,12 @@
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
-                        app:boxStrokeColor="@color/custom_color_subtle_grey"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/custom_color_light_purple"
+                        app:boxStrokeColor="@color/custom_color_purple"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.password}"
+                        app:errorTextAppearance="@style/TextErrorAppearance"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -154,6 +166,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/signIn_materialButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:backgroundTint="@color/custom_color_purple"
@@ -161,7 +174,7 @@
                     android:layout_marginBottom="30dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="14sp"
-                    android:onClick="@{()->listener.onSubmitClicked(edtEmail.getText().toString(), edtPassword.getText().toString())}"
+                    android:onClick="@{()->viewModel.onSubmitClicked(edtEmail.getText().toString(), edtPassword.getText().toString())}"
                     android:fontFamily="@font/manrope_semibold"
                     app:elevation="4dp"
                     android:text="@string/sign_in" />

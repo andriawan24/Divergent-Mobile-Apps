@@ -1,36 +1,28 @@
 <resources>
     <string name="app_name">Divergent Mobile Apps</string>
-
     <string name="title_slider_1">Find out about your child mental care in a click</string>
     <string name="subtitle_slider_1">Know more about your child’s health, watch out for the signs</string>
-
     <string name="title_slider_2">We will help you find the abnormality</string>
     <string name="subtitle_slider_2">The sooner you find out, the faster it will be handled</string>
-
     <string name="title_slider_3">Simply to use and Accurate Diagnosis</string>
     <string name="subtitle_slider_3"> Answer the question, see the result and you can provide the best care for your child </string>
-
     <string name="slider_next">Next</string>
     <string name="slider_prev">Prev</string>
     <string name="slider_skip">Skip</string>
-
     <string name="title_login">Welcome Parents,</string>
     <string name="subtitle_login">It’s nice to see you, please sign in to continue!</string>
-
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="password_confirmation">Password Confirmation</string>
-
     <string name="title_register">Create Account</string>
     <string name="subtitle_register">Fill the blank input below here to sign up.</string>
-
     <string name="register_intro">Don’t have an account? <b>Sign Up</b></string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="hint_email">Enter Your Email</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_password">Enter your password</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="hint_phone_number">Enter your phone number</string>
 </resources>

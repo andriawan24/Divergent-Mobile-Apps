@@ -1,4 +1,4 @@
-package com.andriawan.divergent_mobile_apps.ui.on_boarding
+package com.andriawan.divergent_mobile_apps.ui.onboard
 
 import android.view.View.*
 import android.widget.ImageView
@@ -115,7 +115,9 @@ class OnboardFragment: BaseFragment<FragmentOnboardingBinding, OnboardViewModel>
     }
 
     private fun toRegisterPage() {
-        showToast("To Register Page", FancyToast.SUCCESS)
+        findNavController().navigate(OnboardFragmentDirections
+            .actionOnboardFragmentToLoginFragment(true)
+        )
     }
 
     private fun toLoginPage() {

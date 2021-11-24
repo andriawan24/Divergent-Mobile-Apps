@@ -1,4 +1,4 @@
-package com.andriawan.divergent_mobile_apps.ui.on_boarding
+package com.andriawan.divergent_mobile_apps.ui.onboard
 
 interface OnboardListener {
     fun onLoginClicked()

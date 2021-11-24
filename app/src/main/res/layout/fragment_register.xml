@@ -1,14 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.register.RegisterFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.andriawan.divergent_mobile_apps.ui.register.RegisterViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true"
+        android:background="@color/custom_color_background"
+        tools:context=".ui.login.LoginFragment">
 
-</FrameLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_register"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/custom_color_grey"
+                    android:fontFamily="@font/manrope_bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/subtitle_text_color"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/subtitle_register" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/name" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxBackgroundColor="@color/custom_color_background"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxStrokeColor="@color/custom_color_purple"
+                    app:boxBackgroundMode="outline"
+                    app:errorEnabled="true"
+                    errorText="@{viewModel.errorForm.name}"
+                    app:errorTextAppearance="@style/TextErrorAppearance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:hint="@string/hint_name"
+                        android:fontFamily="@font/manrope_regular"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:imeOptions="actionNext"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/email" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxBackgroundColor="@color/custom_color_background"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxStrokeColor="@color/custom_color_purple"
+                    app:boxBackgroundMode="outline"
+                    app:errorEnabled="true"
+                    errorText="@{viewModel.errorForm.email}"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:hint="@string/hint_email"
+                        android:fontFamily="@font/manrope_regular"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:imeOptions="actionNext"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/phone_number" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxBackgroundColor="@color/custom_color_background"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxStrokeColor="@color/custom_color_purple"
+                    app:boxBackgroundMode="outline"
+                    app:errorEnabled="true"
+                    errorText="@{viewModel.errorForm.phone}"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:hint="@string/hint_phone_number"
+                        android:fontFamily="@font/manrope_regular"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:imeOptions="actionNext"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/password" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxBackgroundColor="@color/custom_color_background"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/custom_color_light_purple"
+                    app:boxStrokeColor="@color/custom_color_purple"
+                    app:errorEnabled="true"
+                    errorText="@{viewModel.errorForm.password}"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:hint="@string/hint_password"
+                        android:fontFamily="@font/manrope_regular"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/password_confirmation" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxBackgroundColor="@color/custom_color_background"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/custom_color_light_purple"
+                    app:boxStrokeColor="@color/custom_color_purple"
+                    app:errorEnabled="true"
+                    errorText="@{viewModel.errorForm.passwordConfirmation}"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPasswordConfirmation"
+                        android:layout_width="match_parent"
+                        android:hint="@string/hint_password"
+                        android:fontFamily="@font/manrope_regular"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:backgroundTint="@color/custom_color_purple"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/manrope_semibold"
+                android:onClick="@{()->viewModel.onSubmitClicked(edtName.getText().toString(), edtEmail.getText().toString(), edtPhoneNumber.getText().toString(), edtPassword.getText().toString(), edtPasswordConfirmation.getText().toString())}"
+                app:elevation="4dp"
+                android:text="@string/sign_up" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/custom_color_purple"
+                android:fontFamily="@font/manrope_regular"
+                android:textSize="12sp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/register_intro" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

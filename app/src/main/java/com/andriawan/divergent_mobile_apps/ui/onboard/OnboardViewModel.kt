@@ -1,9 +1,9 @@
-package com.andriawan.divergent_mobile_apps.ui.on_boarding
+package com.andriawan.divergent_mobile_apps.ui.onboard
 
 import android.app.Application
 import androidx.lifecycle.*
 import com.andriawan.divergent_mobile_apps.models.OnboardModel
-import com.andriawan.divergent_mobile_apps.ui.on_boarding.Data.getOnboardData
+import com.andriawan.divergent_mobile_apps.ui.onboard.Data.getOnboardData
 import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_IS_FIRST_INSTALLED
 import com.andriawan.divergent_mobile_apps.utils.SharedPreferenceHelper
 import com.andriawan.divergent_mobile_apps.utils.SingleEvents

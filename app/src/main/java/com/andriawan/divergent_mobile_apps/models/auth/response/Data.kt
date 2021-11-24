@@ -1,4 +1,4 @@
-package com.andriawan.divergent_mobile_apps.models.login.response
+package com.andriawan.divergent_mobile_apps.models.auth.response
 
 data class Data(
     val access_token: String,

@@ -5,15 +5,18 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Patterns
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.andriawan.divergent_mobile_apps.data.Repository
-import com.andriawan.divergent_mobile_apps.models.login.PostLogin
-import com.andriawan.divergent_mobile_apps.models.login.response.LoginResponse
-import com.andriawan.divergent_mobile_apps.models.login.response.User
+import com.andriawan.divergent_mobile_apps.models.auth.PostLogin
+import com.andriawan.divergent_mobile_apps.models.auth.form.ErrorLoginForm
+import com.andriawan.divergent_mobile_apps.models.auth.form.ErrorRegisterForm
+import com.andriawan.divergent_mobile_apps.models.auth.response.LoginResponse
+import com.andriawan.divergent_mobile_apps.models.auth.response.User
 import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_ACCESS_TOKEN
 import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_IS_LOGGED_IN
 import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_USER_PROFILE
@@ -36,10 +39,17 @@ class LoginViewModel @Inject constructor(
     private val _goToMainPage = MutableLiveData<SingleEvents<Boolean>>()
     val goToMainPage: LiveData<SingleEvents<Boolean>> = _goToMainPage
 
+    private val _errorForm = MutableLiveData<ErrorLoginForm>()
+    val errorForm: LiveData<ErrorLoginForm> = _errorForm
+
+    private val _goRegister = MutableLiveData<SingleEvents<Boolean>>()
+    val goRegister: LiveData<SingleEvents<Boolean>> = _goRegister
+
     private val _loginResponse = MutableLiveData<NetworkResult<LoginResponse>>()
     val loginResponse: LiveData<NetworkResult<LoginResponse>> = _loginResponse
 
     init {
+        _errorForm.value = ErrorLoginForm()
         val isLoggedIn = sharedPreferenceHelper.getBoolean(PREFERENCE_IS_LOGGED_IN)
         if (isLoggedIn) {
             _goToMainPage.value = SingleEvents(true)
@@ -125,13 +135,37 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    override fun onSubmitClicked(email: String, password: String) {
-        if (email.isNotEmpty() and password.isNotEmpty()) {
-            login(email, password)
+    fun onSubmitClicked(email: String, password: String) {
+        errorForm.value?.let {
+            it.email = ""
+            it.password = ""
+
+            var valid = true
+
+            if (email.isEmpty()) {
+                valid = false
+                it.email = "Please fill email field"
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                valid = false
+                it.email = "Enter a valid email"
+            }
+
+            when {
+                password.isEmpty() -> {
+                    it.password = "Please fill password field"
+                    valid = false
+                }
+            }
+
+            _errorForm.value = it
+
+            if (valid) {
+                login(email, password)
+            }
         }
     }
 
     override fun toRegisterClicked() {
-        // no ops yet
+        _goRegister.value = SingleEvents(true)
     }
 }

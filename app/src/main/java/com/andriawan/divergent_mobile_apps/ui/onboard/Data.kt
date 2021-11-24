@@ -1,4 +1,4 @@
-package com.andriawan.divergent_mobile_apps.ui.on_boarding
+package com.andriawan.divergent_mobile_apps.ui.onboard
 
 import com.andriawan.divergent_mobile_apps.R
 import com.andriawan.divergent_mobile_apps.models.OnboardModel
