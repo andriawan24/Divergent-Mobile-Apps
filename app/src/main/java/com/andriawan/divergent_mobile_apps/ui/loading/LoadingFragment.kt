@@ -1,6 +1,5 @@
 package com.andriawan.divergent_mobile_apps.ui.loading
 
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -36,19 +35,5 @@ class LoadingFragment : BaseFragment<FragmentLoadingBinding, LoadingViewModel>()
 
     override fun onInitObservers() {
         super.onInitObservers()
-
-        viewModel.isLoading.observe(this, {
-            if (it) {
-                showToast("Go to splash", FancyToast.SUCCESS)
-            }
-        })
-    }
-
-    override fun setOnClickListener() {
-        // No-ops
-    }
-
-    override fun onClick(v: View?) {
-        // No-ops
     }
 }

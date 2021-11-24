@@ -14,7 +14,6 @@
             android:id="@+id/action_loadingFragment_to_onboardFragment"
             app:destination="@id/onboardFragment"
             app:popUpTo="@id/loadingFragment"
-            app:launchSingleTop="true"
             app:popUpToInclusive="true"/>
     </fragment>
 
@@ -22,6 +21,19 @@
         android:id="@+id/onboardFragment"
         android:name="com.andriawan.divergent_mobile_apps.ui.on_boarding.OnboardFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_onboarding" >
+
+        <action
+            android:id="@+id/action_onboardFragment_to_loginFragment"
+            app:popUpTo="@id/onboardFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/loginFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.login.LoginFragment"
+        android:label="LoginFragment" />
 
 </navigation>

@@ -1,27 +1,72 @@
 package com.andriawan.divergent_mobile_apps.ui.on_boarding
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.andriawan.divergent_mobile_apps.models.OnboardModel
 import com.andriawan.divergent_mobile_apps.ui.on_boarding.Data.getOnboardData
+import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_IS_FIRST_INSTALLED
+import com.andriawan.divergent_mobile_apps.utils.SharedPreferenceHelper
+import com.andriawan.divergent_mobile_apps.utils.SingleEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class OnboardViewModel @Inject constructor(
-    application: Application
-): AndroidViewModel(application) {
+    application: Application,
+    private val sharedPreferenceHelper: SharedPreferenceHelper
+): AndroidViewModel(application), OnboardListener {
 
-    private val _models = MutableLiveData<List<OnboardModel>>()
-    val models: LiveData<List<OnboardModel>> = _models
+    private val _needToUpdateRecycler = MutableLiveData<SingleEvents<List<OnboardModel>>>()
+    val needToUpdateRecycler: LiveData<SingleEvents<List<OnboardModel>>> = _needToUpdateRecycler
 
-    private val _needToUpdateRecycler = MutableLiveData(false)
-    val needToUpdateRecycler: LiveData<Boolean> = _needToUpdateRecycler
+    private val _goToLoginPage = MutableLiveData<SingleEvents<Boolean>>()
+    val goToLoginPage: LiveData<SingleEvents<Boolean>> = _goToLoginPage
+
+    private val _goToRegisterPage = MutableLiveData<SingleEvents<Boolean>>()
+    val goToRegisterPage: LiveData<SingleEvents<Boolean>> = _goToRegisterPage
+
+    private val _nextClicked = MutableLiveData<SingleEvents<Boolean>>()
+    val nextClicked: LiveData<SingleEvents<Boolean>> = _nextClicked
+
+    private val _skipClicked = MutableLiveData<SingleEvents<Boolean>>()
+    val skipClicked: LiveData<SingleEvents<Boolean>> = _skipClicked
+
+    private val _prevClicked = MutableLiveData<SingleEvents<Boolean>>()
+    val prevClicked: LiveData<SingleEvents<Boolean>> = _prevClicked
 
     init {
-        _models.value = getOnboardData()
-        _needToUpdateRecycler.value = true
+        _needToUpdateRecycler.value = SingleEvents(getOnboardData())
+
+        val isFirstTime = sharedPreferenceHelper.getBoolean(PREFERENCE_IS_FIRST_INSTALLED)
+        if (isFirstTime) {
+            _goToLoginPage.value = SingleEvents(true)
+        }
+    }
+
+    private fun updateFirstTimeInstalled() {
+        sharedPreferenceHelper.saveBoolean(PREFERENCE_IS_FIRST_INSTALLED, true)
+    }
+
+    override fun onLoginClicked() {
+        updateFirstTimeInstalled()
+        _goToLoginPage.value = SingleEvents(true)
+    }
+
+    override fun onRegisterClicked() {
+        updateFirstTimeInstalled()
+        _goToRegisterPage.value = SingleEvents(true)
+    }
+
+    override fun onSkipClicked() {
+        updateFirstTimeInstalled()
+        _skipClicked.value = SingleEvents(true)
+    }
+
+    override fun onNextClicked() {
+        _nextClicked.value = SingleEvents(true)
+    }
+
+    override fun onPrevClicked() {
+        _prevClicked.value = SingleEvents(true)
     }
 }

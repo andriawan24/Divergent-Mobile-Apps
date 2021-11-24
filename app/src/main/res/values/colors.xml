@@ -15,4 +15,5 @@
     <color name="custom_color_background">#FAFCFE</color>
     <color name="custom_color_subtle_blue">#D5D5EB</color>
     <color name="custom_color_grey">#464E56</color>
+    <color name="subtitle_text_color">#B2B1B9</color>
 </resources>
