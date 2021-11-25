@@ -1,17 +1,10 @@
 package com.andriawan.divergent_mobile_apps.ui.login
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.andriawan.divergent_mobile_apps.R
 import com.andriawan.divergent_mobile_apps.base.BaseFragment
 import com.andriawan.divergent_mobile_apps.databinding.FragmentLoginBinding
-import com.andriawan.divergent_mobile_apps.ui.loading.LoadingViewModel
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
