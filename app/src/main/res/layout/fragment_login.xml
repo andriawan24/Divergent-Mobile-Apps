@@ -32,27 +32,28 @@
 
                 <ImageView
                     android:layout_width="250dp"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="20dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:src="@drawable/login_image" />
+                    android:layout_marginVertical="32dp"
+                    android:layout_marginHorizontal="24dp"
+                    tools:src="@drawable/login_image"
+                    imageViewResource="@{@drawable/login_image}" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginHorizontal="24dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_login"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginBottom="5dp"
                         android:textColor="@color/custom_color_grey"
                         android:fontFamily="@font/manrope_bold" />
@@ -70,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="24dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -115,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="24dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -172,7 +173,7 @@
                     app:backgroundTint="@color/custom_color_purple"
                     app:cornerRadius="10dp"
                     android:layout_marginBottom="30dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="24dp"
                     android:textSize="14sp"
                     android:onClick="@{()->viewModel.onSubmitClicked(edtEmail.getText().toString(), edtPassword.getText().toString())}"
                     android:fontFamily="@font/manrope_semibold"
@@ -187,7 +188,7 @@
                     android:fontFamily="@font/manrope_regular"
                     android:textSize="12sp"
                     android:onClick="@{()->listener.toRegisterClicked()}"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="32dp"
                     android:text="@string/register_intro" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

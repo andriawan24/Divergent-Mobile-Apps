@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andriawan.divergent_mobile_apps.base.BaseFragment
 import com.andriawan.divergent_mobile_apps.databinding.FragmentLoginBinding
+import com.andriawan.divergent_mobile_apps.utils.DialogBase
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +19,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     private val args: LoginFragmentArgs by navArgs()
+    private lateinit var dialogBase: DialogBase
 
     override fun onInitViews() {
         super.onInitViews()
@@ -29,6 +31,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         binding.listener = viewModel
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        initDialog()
     }
 
     private fun toRegister() {
@@ -37,25 +41,39 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         )
     }
 
+    private fun initDialog() {
+        dialogBase = DialogBase(requireContext(), layoutInflater)
+        dialogBase.setOnConfirmClicked {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            dialogBase.dismiss()
+        }
+    }
+
     override fun onInitObservers() {
         super.onInitObservers()
 
         viewModel.loginResponse.observe(this, {
             when (it) {
                 is NetworkResult.Loading -> {
+                    dialogBase.updateState(Pair(DialogBase.LOADING, ""))
                     binding.signInMaterialButton.isEnabled = false
-                    showToast("Please wait...", FancyToast.INFO)
                 }
 
                 is NetworkResult.Success -> {
                     binding.signInMaterialButton.isEnabled = true
-                    showToast("Success Login ${it.data?.data?.user?.name}", FancyToast.SUCCESS)
+                    dialogBase.updateState(Pair(DialogBase.SUCCESS, "Success Login ${it.data?.data?.user?.name}"))
                 }
 
                 is NetworkResult.Error -> {
                     binding.signInMaterialButton.isEnabled = true
-                    showToast("Error Login ${it.message}", FancyToast.ERROR)
+                    dialogBase.updateState(Pair(DialogBase.ERROR, "Error Login ${it.message}"))
                 }
+            }
+        })
+
+        viewModel.goToMainPage.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
         })
 

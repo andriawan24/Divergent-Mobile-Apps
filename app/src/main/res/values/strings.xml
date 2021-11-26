@@ -25,4 +25,5 @@
     <string name="hint_password">Enter your password</string>
     <string name="hint_name">Enter your name</string>
     <string name="hint_phone_number">Enter your phone number</string>
+    <string name="close">Close</string>
 </resources>

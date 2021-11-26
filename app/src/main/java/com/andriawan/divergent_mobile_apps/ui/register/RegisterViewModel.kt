@@ -21,6 +21,7 @@ import com.andriawan.divergent_mobile_apps.utils.Constants
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.andriawan.divergent_mobile_apps.utils.SharedPreferenceHelper
 import com.andriawan.divergent_mobile_apps.utils.SingleEvents
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -143,6 +144,12 @@ class RegisterViewModel @Inject constructor(
 
                 response.body()?.data?.access_token?.let {
                     sharedPreferenceHelper.saveString(Constants.PREFERENCE_ACCESS_TOKEN, it)
+                }
+
+                response.body()?.data?.user?.let { user ->
+                    sharedPreferenceHelper.saveString(
+                        Constants.PREFERENCE_USER_PROFILE, Gson().toJson(user)
+                    )
                 }
             } catch (e: Exception) {
                 _registerResponse.value = NetworkResult.Error("Something went wrong ${e.message}")

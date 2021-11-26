@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="desc"
+            type="String" />
+        <variable
+            name="showProgress"
+            type="Boolean" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="24sp"
+            tools:text="Testing"
+            android:fontFamily="@font/manrope_semibold"
+            android:textColor="@color/custom_color_grey"
+            android:text="@{title}"
+            android:visibility="@{showProgress?View.GONE:View.VISIBLE}"/>
+
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:progressTint="@color/custom_color_light_purple"
+            android:visibility="@{showProgress?View.VISIBLE:View.GONE}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/custom_color_grey"
+            tools:text="Testing"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_marginTop="20dp"
+            android:text="@{desc}"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="@string/close"
+            app:cornerRadius="8dp"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="24dp"
+            app:backgroundTint="@color/custom_color_purple"
+            android:visibility="@{showProgress?View.GONE:View.VISIBLE}"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

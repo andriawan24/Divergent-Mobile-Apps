@@ -23,6 +23,7 @@ import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PREFERENCE_
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.andriawan.divergent_mobile_apps.utils.SharedPreferenceHelper
 import com.andriawan.divergent_mobile_apps.utils.SingleEvents
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -81,6 +82,10 @@ class LoginViewModel @Inject constructor(
 
                 response.body()?.data?.access_token?.let {
                     sharedPreferenceHelper.saveString(PREFERENCE_ACCESS_TOKEN, it)
+                }
+
+                response.body()?.data?.user?.let { user ->
+                    sharedPreferenceHelper.saveString(PREFERENCE_USER_PROFILE, Gson().toJson(user))
                 }
             } catch (e: Exception) {
                 _loginResponse.value = NetworkResult.Error("Something went wrong ${e.message}")
