@@ -37,9 +37,7 @@ object BindingAdapter {
     @BindingAdapter("imageProfile")
     @JvmStatic
     fun ImageView.bindImageProfile(imageViewUrl: String?) {
-        imageViewUrl?.let {
-            GlideHelper.showImageProfile(it, this, context)
-        }
+        GlideHelper.showImageProfile(imageViewUrl, this, context)
     }
 
     @BindingAdapter("imageViewUrl")

@@ -26,4 +26,19 @@
     <string name="hint_name">Enter your name</string>
     <string name="hint_phone_number">Enter your phone number</string>
     <string name="close">Close</string>
+    <string name="welcome">Welcome,</string>
+    <string name="card_title">Remember to check your child mental care with us</string>
+    <string name="card_subtitle">Protect your child’s future</string>
+    <string name="what_do_you_want">What do you want?</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="history">History</string>
+    <string name="latest_articles">Latest Articles</string>
+    <string name="wiki">Wiki</string>
+    <string name="articles">Articles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="logout">Logout</string>
+    <string name="hint_update_password">Enter your new password (Optional)</string>
 </resources>

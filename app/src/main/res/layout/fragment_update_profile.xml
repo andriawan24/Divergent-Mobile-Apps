@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.andriawan.divergent_mobile_apps.ui.profile.ProfileViewModel" />
+
+        <variable
+            name="listener"
+            type="com.andriawan.divergent_mobile_apps.ui.profile.ProfileListener" />
+
+        <variable
+            name="user"
+            type="com.andriawan.divergent_mobile_apps.models.auth.response.User" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/custom_color_background"
+            app:elevation="0dp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/app_name"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/custom_color_grey"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/edit_profile" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/custom_color_background"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="24dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        imageProfile="@{`https://cdn.medcom.id/dynamic/content/2021/10/05/1335994/WIbmjnRkZx.jpg?w=480`}"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:contentDescription="@string/app_name"
+                        tools:src="@drawable/dummy_article" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_pen"
+                        android:layout_marginEnd="-5dp"
+                        android:layout_marginBottom="-5dp"
+                        android:layout_alignBottom="@id/imageView"
+                        android:layout_alignEnd="@id/imageView"/>
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/custom_color_grey"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/name" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        app:boxBackgroundColor="@color/custom_color_background"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxStrokeColor="@color/custom_color_purple"
+                        app:boxBackgroundMode="outline"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.name}"
+                        app:errorTextAppearance="@style/TextErrorAppearance"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtName"
+                            android:layout_width="match_parent"
+                            android:hint="@string/hint_name"
+                            android:fontFamily="@font/manrope_regular"
+                            android:inputType="text"
+                            android:text="@{user.name}"
+                            android:lines="1"
+                            android:imeOptions="actionNext"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/custom_color_grey"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/email" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        app:boxBackgroundColor="@color/custom_color_background"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxStrokeColor="@color/custom_color_purple"
+                        app:boxBackgroundMode="outline"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.email}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtEmail"
+                            android:layout_width="match_parent"
+                            android:hint="@string/hint_email"
+                            android:fontFamily="@font/manrope_regular"
+                            android:inputType="textEmailAddress"
+                            android:lines="1"
+                            android:text="@{user.email}"
+                            android:imeOptions="actionNext"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/custom_color_grey"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/phone_number" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        app:boxBackgroundColor="@color/custom_color_background"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxStrokeColor="@color/custom_color_purple"
+                        app:boxBackgroundMode="outline"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.phone}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:hint="@string/hint_phone_number"
+                            android:fontFamily="@font/manrope_regular"
+                            android:inputType="phone"
+                            android:lines="1"
+                            android:text="@{user.phone_number}"
+                            android:imeOptions="actionNext"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/custom_color_grey"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/password" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintEnabled="false"
+                        app:boxBackgroundColor="@color/custom_color_background"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/custom_color_light_purple"
+                        app:boxStrokeColor="@color/custom_color_purple"
+                        app:errorEnabled="true"
+                        errorText="@{viewModel.errorForm.password}"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtPassword"
+                            android:layout_width="match_parent"
+                            android:hint="@string/hint_update_password"
+                            android:fontFamily="@font/manrope_regular"
+                            android:inputType="textPassword"
+                            android:imeOptions="actionDone"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:backgroundTint="@color/custom_color_purple"
+                    app:cornerRadius="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope_semibold"
+                    app:elevation="4dp"
+                    android:text="@string/save" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:cornerRadius="10dp"
+                    app:strokeWidth="1dp"
+                    android:onClick="@{()->listener.logoutClicked()}"
+                    app:strokeColor="@color/custom_color_pink"
+                    android:textColor="@color/custom_color_pink"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope_semibold"
+                    app:elevation="4dp"
+                    android:text="@string/logout" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

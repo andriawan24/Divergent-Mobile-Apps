@@ -44,7 +44,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     private fun initDialog() {
         dialogBase = DialogBase(requireContext(), layoutInflater)
         dialogBase.setOnConfirmClicked {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            if (dialogBase.dialogState == DialogBase.SUCCESS) {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            }
             dialogBase.dismiss()
         }
     }

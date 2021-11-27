@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_register"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/custom_color_grey"
                     android:fontFamily="@font/manrope_bold" />
@@ -269,6 +269,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/signUp_materialButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 app:backgroundTint="@color/custom_color_purple"

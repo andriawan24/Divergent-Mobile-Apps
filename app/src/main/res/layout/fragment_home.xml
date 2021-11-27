@@ -7,6 +7,10 @@
         <variable
             name="user"
             type="com.andriawan.divergent_mobile_apps.models.auth.response.User" />
+
+        <variable
+            name="listener"
+            type="com.andriawan.divergent_mobile_apps.ui.home.HomeListener" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -22,26 +26,30 @@
 
             <ImageView
                 android:id="@+id/profilePicture_imageView"
+                imageProfile="@{user.profile_photo_url}"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                imageProfile="@{user.profile_photo_url}"
-                android:layout_marginTop="32dp"
                 android:layout_marginHorizontal="24dp"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/profilePicture_imageView"
-                app:layout_constraintBottom_toBottomOf="@id/profilePicture_imageView"
                 android:layout_marginHorizontal="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:selectableItemBackground"
+                android:onClick="@{()->listener.goToEditProfile()}"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="2dp"
                 app:contentPadding="5dp"
-                app:cardCornerRadius="15dp">
+                app:layout_constraintBottom_toBottomOf="@id/profilePicture_imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/profilePicture_imageView">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -50,6 +58,394 @@
                     app:srcCompat="@drawable/ic_people" />
 
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/welcomingText_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/manrope_regular"
+                android:text="@string/welcome"
+                android:textColor="@color/subtitle_text_color"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profilePicture_imageView" />
+
+            <TextView
+                android:id="@+id/name_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@{user.name}"
+                android:textColor="@color/custom_color_light_purple"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/welcomingText_textView"
+                tools:text="Naufal Fawwaz Andriawan" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/introduction_cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="24dp"
+                app:cardBackgroundColor="@color/custom_color_purple"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="20dp"
+                app:layout_constraintTop_toBottomOf="@id/name_textView">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_bold"
+                            android:text="@string/card_title"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/manrope_regular"
+                            android:text="@string/card_subtitle"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="-30dp"
+                android:contentDescription="@string/app_name"
+                android:elevation="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_doctor_card"
+                app:layout_constraintBottom_toBottomOf="@id/introduction_cardView"
+                app:layout_constraintEnd_toEndOf="@id/introduction_cardView"
+                app:layout_constraintTop_toTopOf="@id/introduction_cardView" />
+
+            <TextView
+                android:id="@+id/menuTitle_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/what_do_you_want"
+                android:textColor="@color/custom_color_grey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/introduction_cardView" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/menuDiagnose_materialCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{()->listener.menuClicked(`diagnose`)}"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@id/menuHistory_materialCardView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/menuTitle_textView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/iconDiagnose_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:contentPaddingBottom="10dp"
+                        app:contentPaddingLeft="12dp"
+                        app:contentPaddingRight="12dp"
+                        app:contentPaddingTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/custom_color_purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_diagnose" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@string/diagnose"
+                        android:textColor="@color/custom_color_grey"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iconDiagnose_imageView"
+                        app:layout_constraintStart_toEndOf="@id/iconDiagnose_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/iconDiagnose_imageView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/menuHistory_materialCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="12dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{()->listener.menuClicked(`history`)}"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/menuDiagnose_materialCardView"
+                app:layout_constraintTop_toBottomOf="@id/menuTitle_textView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/iconHistory_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:contentPaddingBottom="10dp"
+                        app:contentPaddingLeft="12dp"
+                        app:contentPaddingRight="12dp"
+                        app:contentPaddingTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/custom_color_purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_history" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@string/history"
+                        android:textColor="@color/custom_color_grey"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iconHistory_imageView"
+                        app:layout_constraintStart_toEndOf="@id/iconHistory_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/iconHistory_imageView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/menuWiki_materialCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="12dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{()->listener.menuClicked(`wiki`)}"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@id/menuArticle_materialCardView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/menuDiagnose_materialCardView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/iconWiki_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:contentPaddingBottom="10dp"
+                        app:contentPaddingLeft="12dp"
+                        app:contentPaddingRight="12dp"
+                        app:contentPaddingTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/custom_color_purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_wiki" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@string/wiki"
+                        android:textColor="@color/custom_color_grey"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iconWiki_imageView"
+                        app:layout_constraintStart_toEndOf="@id/iconWiki_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/iconWiki_imageView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/menuArticle_materialCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="12dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{()->listener.menuClicked(`article`)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/menuWiki_materialCardView"
+                app:layout_constraintTop_toBottomOf="@id/menuHistory_materialCardView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/iconArticle_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:contentPaddingBottom="10dp"
+                        app:contentPaddingLeft="12dp"
+                        app:contentPaddingRight="12dp"
+                        app:contentPaddingTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/custom_color_purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_article" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@string/articles"
+                        android:textColor="@color/custom_color_grey"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iconArticle_imageView"
+                        app:layout_constraintStart_toEndOf="@id/iconArticle_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/iconArticle_imageView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/articleTitle_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/latest_articles"
+                android:textColor="@color/custom_color_grey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/menuWiki_materialCardView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/articles_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_marginTop="12dp"
+                tools:listitem="@layout/item_articles"
+                app:layout_constraintTop_toBottomOf="@id/articleTitle_textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

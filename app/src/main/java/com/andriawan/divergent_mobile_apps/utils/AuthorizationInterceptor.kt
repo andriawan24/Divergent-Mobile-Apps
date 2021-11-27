@@ -16,7 +16,7 @@ class AuthorizationInterceptor(
         request.addHeader("Accept", "application/json")
 
         if (accessToken != null && accessToken.isNotEmpty()) {
-            request.addHeader("Authorization", accessToken)
+            request.addHeader("Authorization", "Bearer $accessToken")
         }
 
         return chain.proceed(request.build())
