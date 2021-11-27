@@ -57,7 +57,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, RegisterViewModel
 
                 is NetworkResult.Success -> {
                     binding.signUpMaterialButton.isEnabled = true
-                    dialogBase.updateState(Pair(DialogBase.SUCCESS, "Success Register, hello ${it.data?.data?.user?.name}"))
+                    dialogBase.updateState(Pair(DialogBase.SUCCESS, "Hello, ${it.data?.data?.user?.name}"))
                 }
 
                 is NetworkResult.Error -> {

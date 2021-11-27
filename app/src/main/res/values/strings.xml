@@ -19,6 +19,7 @@
     <string name="title_register">Create Account</string>
     <string name="subtitle_register">Fill the blank input below here to sign up.</string>
     <string name="register_intro">Don’t have an account? <b>Sign Up</b></string>
+    <string name="login_intro">Already have an account? <b>Sign In</b></string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="hint_email">Enter Your Email</string>
@@ -35,8 +36,6 @@
     <string name="latest_articles">Latest Articles</string>
     <string name="wiki">Wiki</string>
     <string name="articles">Articles</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
     <string name="logout">Logout</string>

@@ -8,4 +8,5 @@ interface RegisterListener {
 //        password: String,
 //        passwordConfirmation: String
 //    )
+    fun goToLogin()
 }

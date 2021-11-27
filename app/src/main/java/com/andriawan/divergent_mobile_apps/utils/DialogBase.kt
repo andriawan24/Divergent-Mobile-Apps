@@ -42,6 +42,8 @@ class DialogBase(context: Context, layoutInflater: LayoutInflater) {
         binding.title = "Success"
         binding.desc = successMessage
         binding.showProgress = false
+        alertDialog.setCancelable(false)
+        alertDialog.setCanceledOnTouchOutside(false)
         alertDialog.show()
     }
 

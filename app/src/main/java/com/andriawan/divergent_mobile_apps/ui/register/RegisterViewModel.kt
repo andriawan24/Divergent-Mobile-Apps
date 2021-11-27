@@ -42,6 +42,9 @@ class RegisterViewModel @Inject constructor(
     private val _showToast = MutableLiveData<SingleEvents<Boolean>>()
     val showToast: LiveData<SingleEvents<Boolean>> = _showToast
 
+    private val _goToLogin = MutableLiveData<SingleEvents<Boolean>>()
+    val goToLogin: LiveData<SingleEvents<Boolean>> = _goToLogin
+
     private val _registerResponse = MutableLiveData<NetworkResult<LoginResponse>>()
     val registerResponse: LiveData<NetworkResult<LoginResponse>> = _registerResponse
 
@@ -202,5 +205,9 @@ class RegisterViewModel @Inject constructor(
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
             else -> false
         }
+    }
+
+    override fun goToLogin() {
+        TODO("Not yet implemented")
     }
 }
