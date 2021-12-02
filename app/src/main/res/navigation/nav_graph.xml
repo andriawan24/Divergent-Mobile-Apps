@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_homeFragment_to_updateProfileFragment"
             app:destination="@id/updateProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_formIntroFragment"
+            app:destination="@id/nav_graph_diagnose" />
     </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
@@ -85,5 +88,7 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <include app:graph="@navigation/nav_graph_diagnose" />
 
 </navigation>

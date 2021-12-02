@@ -63,6 +63,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
         })
 
+        viewModel.goToDiagnose.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                findNavController()
+                    .navigate(HomeFragmentDirections
+                        .actionHomeFragmentToFormIntroFragment())
+            }
+        })
+
         viewModel.showToast.observe(this, {
             it.getContentIfNotHandled()?.let { message ->
                 showToast(message, FancyToast.SUCCESS)

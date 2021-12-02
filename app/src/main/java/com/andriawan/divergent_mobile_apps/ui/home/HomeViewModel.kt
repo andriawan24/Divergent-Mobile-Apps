@@ -50,6 +50,9 @@ class HomeViewModel @Inject constructor(
     private val _goToProfile = MutableLiveData<SingleEvents<Boolean>>()
     val goToProfile: LiveData<SingleEvents<Boolean>> = _goToProfile
 
+    private val _goToDiagnose = MutableLiveData<SingleEvents<Boolean>>()
+    val goToDiagnose: LiveData<SingleEvents<Boolean>> = _goToDiagnose
+
     init {
         getArticles()
     }
@@ -140,7 +143,7 @@ class HomeViewModel @Inject constructor(
     override fun menuClicked(menuName: String) {
         when (menuName) {
             "diagnose" -> {
-                _showToast.postValue(SingleEvents("Diagnose Clicked"))
+                _goToDiagnose.value = SingleEvents(true)
             }
 
             "history" -> {

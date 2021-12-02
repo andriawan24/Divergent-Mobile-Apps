@@ -5,8 +5,12 @@ import com.andriawan.divergent_mobile_apps.models.auth.PostLogin
 import com.andriawan.divergent_mobile_apps.models.auth.PostRegister
 import com.andriawan.divergent_mobile_apps.models.auth.response.LoginResponse
 import com.andriawan.divergent_mobile_apps.models.articles.ArticleResponse
+import com.andriawan.divergent_mobile_apps.models.diagnose.PostDiagnose
+import com.andriawan.divergent_mobile_apps.models.diagnose.response.DiagnoseResponse
 import com.andriawan.divergent_mobile_apps.models.profile.PostProfile
 import com.andriawan.divergent_mobile_apps.models.profile.response.UpdateProfileResponse
+import com.andriawan.divergent_mobile_apps.models.symptoms.SymptomsResponse
+import com.andriawan.divergent_mobile_apps.models.symptoms.response.Symptom
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -28,5 +32,13 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun updateProfile(postUpdateProfile: PostProfile): Response<UpdateProfileResponse> {
         return divergentApi.updateProfile(postUpdateProfile)
+    }
+
+    suspend fun getSymptoms(): Response<SymptomsResponse> {
+        return divergentApi.getSymptoms()
+    }
+
+    suspend fun diagnose(postDiagnose: PostDiagnose): Response<DiagnoseResponse> {
+        return divergentApi.diagnose(postDiagnose)
     }
 }

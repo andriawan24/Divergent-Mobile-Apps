@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_diagnose"
+    app:startDestination="@id/formIntroFragment">
+
+    <fragment
+        android:id="@+id/formIntroFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.diagnose.FormIntroFragment"
+        android:label="fragment_form_intro_diagnose"
+        tools:layout="@layout/fragment_form_intro_diagnose" />
+
+</navigation>
