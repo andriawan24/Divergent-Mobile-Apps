@@ -5,6 +5,7 @@ import android.net.Uri
 import android.widget.ImageView
 import com.andriawan.divergent_mobile_apps.R
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 object GlideHelper {
@@ -31,6 +32,21 @@ object GlideHelper {
     }
 
     fun showImageProfile(url: String?, imageView: ImageView, context: Context) {
+        val options = RequestOptions().centerCrop().circleCrop()
+            .placeholder(R.drawable.ic_profile_default)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
+            .error(R.drawable.ic_profile_default)
+
+        val requestBuilder = Glide.with(context)
+            .load(url)
+
+        requestBuilder
+            .apply(options)
+            .into(imageView)
+    }
+
+    fun showImageProfile(url: Uri?, imageView: ImageView, context: Context) {
         val options = RequestOptions().centerCrop().circleCrop()
             .placeholder(R.drawable.ic_profile_default)
             .error(R.drawable.ic_profile_default)

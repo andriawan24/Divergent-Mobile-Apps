@@ -5,6 +5,8 @@ import com.andriawan.divergent_mobile_apps.models.auth.PostLogin
 import com.andriawan.divergent_mobile_apps.models.auth.PostRegister
 import com.andriawan.divergent_mobile_apps.models.auth.response.LoginResponse
 import com.andriawan.divergent_mobile_apps.models.articles.ArticleResponse
+import com.andriawan.divergent_mobile_apps.models.profile.PostProfile
+import com.andriawan.divergent_mobile_apps.models.profile.response.UpdateProfileResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -22,5 +24,9 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getArticles(params: Map<String, String>): Response<ArticleResponse> {
         return divergentApi.getArticles(params)
+    }
+
+    suspend fun updateProfile(postUpdateProfile: PostProfile): Response<UpdateProfileResponse> {
+        return divergentApi.updateProfile(postUpdateProfile)
     }
 }

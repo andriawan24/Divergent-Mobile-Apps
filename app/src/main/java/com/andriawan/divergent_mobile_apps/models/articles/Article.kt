@@ -7,6 +7,7 @@ data class Article(
     val deleted_at: String,
     val description: String,
     val id: Int,
+    val thumbnail_image: String? = null,
     val published_at: String,
     val publisher: String,
     val title: String,

@@ -4,12 +4,16 @@
     package="com.andriawan.divergent_mobile_apps">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true"
         android:name=".MainApplication"
         android:theme="@style/Theme.DivergentMobileApps"
         tools:ignore="AllowBackup,UnusedAttribute">

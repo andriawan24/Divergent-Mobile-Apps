@@ -7,7 +7,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.andriawan.divergent_mobile_apps.BuildConfig
 import com.andriawan.divergent_mobile_apps.R
+import com.andriawan.divergent_mobile_apps.models.auth.response.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -36,8 +38,12 @@ object BindingAdapter {
 
     @BindingAdapter("imageProfile")
     @JvmStatic
-    fun ImageView.bindImageProfile(imageViewUrl: String?) {
-        GlideHelper.showImageProfile(imageViewUrl, this, context)
+    fun ImageView.bindImageProfile(imageViewUrl: User?) {
+        if (imageViewUrl?.image?.isNotEmpty() == true) {
+            GlideHelper.showImageProfile("${BuildConfig.BASE_URL}image/${imageViewUrl.image}", this, context)
+        } else {
+            GlideHelper.showImageProfile(imageViewUrl?.profile_photo_url, this, context)
+        }
     }
 
     @BindingAdapter("imageViewUrl")

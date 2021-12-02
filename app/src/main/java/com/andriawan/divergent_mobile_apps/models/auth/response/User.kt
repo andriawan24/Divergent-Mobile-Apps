@@ -8,6 +8,7 @@ data class User(
     val id: Int? = null,
     val name: String,
     val phone_number: String,
+    val image: String? = null,
     val profile_photo_path: String? = null,
     val profile_photo_url: String,
     val updated_at: String? = null

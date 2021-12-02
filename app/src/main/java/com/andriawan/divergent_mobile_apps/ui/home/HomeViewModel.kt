@@ -31,7 +31,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     application: Application,
-    sharedPreferenceHelper: SharedPreferenceHelper,
+    private val sharedPreferenceHelper: SharedPreferenceHelper,
     private val repository: Repository
 ) : AndroidViewModel(application), HomeListener {
 
@@ -51,11 +51,14 @@ class HomeViewModel @Inject constructor(
     val goToProfile: LiveData<SingleEvents<Boolean>> = _goToProfile
 
     init {
+        getArticles()
+    }
+
+    fun getUser() {
+        Timber.d("Get User")
         _users.value = SingleEvents(
             Gson().fromJson(sharedPreferenceHelper.getString(PREFERENCE_USER_PROFILE), User::class.java)
         )
-
-        getArticles()
     }
 
     private fun getArticles() = viewModelScope.launch {

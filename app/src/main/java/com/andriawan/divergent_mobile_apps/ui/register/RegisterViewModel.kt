@@ -122,7 +122,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    fun register(name: String, email: String, phoneNumber: String, password: String, passwordConfirmation: String) = viewModelScope.launch {
+    private fun register(name: String, email: String, phoneNumber: String, password: String, passwordConfirmation: String) = viewModelScope.launch {
         val postRegister = PostRegister(name, email, phoneNumber, password, passwordConfirmation)
         registerSafeCall(postRegister)
     }
@@ -147,12 +147,6 @@ class RegisterViewModel @Inject constructor(
 
                 response.body()?.data?.access_token?.let {
                     sharedPreferenceHelper.saveString(Constants.PREFERENCE_ACCESS_TOKEN, it)
-                }
-
-                response.body()?.data?.user?.let { user ->
-                    sharedPreferenceHelper.saveString(
-                        Constants.PREFERENCE_USER_PROFILE, Gson().toJson(user)
-                    )
                 }
             } catch (e: Exception) {
                 _registerResponse.value = NetworkResult.Error("Something went wrong ${e.message}")

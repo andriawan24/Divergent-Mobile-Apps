@@ -31,6 +31,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         binding.listener = viewModel
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getUser()
+    }
+
     private fun initDialog() {
         dialogBase = DialogBase(requireContext(), layoutInflater)
     }

@@ -34,6 +34,7 @@
                 android:layout_height="?actionBarSize">
 
                 <ImageView
+                    android:id="@+id/back_imageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:contentDescription="@string/app_name"
@@ -65,6 +66,8 @@
 
                 <RelativeLayout
                     android:id="@+id/relative"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -72,7 +75,7 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        imageProfile="@{user.profile_photo_url}"
+                        imageProfile="@{user}"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="10dp"
@@ -85,12 +88,12 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_pen"
+                        android:layout_alignEnd="@id/imageView"
+                        android:layout_alignBottom="@id/imageView"
                         android:layout_marginEnd="-5dp"
                         android:layout_marginBottom="-5dp"
-                        android:layout_alignBottom="@id/imageView"
-                        android:layout_alignEnd="@id/imageView"/>
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_pen" />
 
                 </RelativeLayout>
 
@@ -174,6 +177,7 @@
                             android:id="@+id/edtEmail"
                             android:layout_width="match_parent"
                             android:hint="@string/hint_email"
+                            android:enabled="false"
                             android:fontFamily="@font/manrope_regular"
                             android:inputType="textEmailAddress"
                             android:lines="1"
@@ -275,13 +279,15 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/saveButton_materialButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:backgroundTint="@color/custom_color_purple"
                     app:cornerRadius="10dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="14sp"
+                    android:onClick="@{()->viewModel.onSubmitClicked(edtName.getText().toString(), edtEmail.getText().toString(), edtPhoneNumber.getText().toString(), edtPassword.getText().toString())}"
                     android:fontFamily="@font/manrope_semibold"
                     app:elevation="4dp"
                     android:text="@string/save" />
