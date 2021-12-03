@@ -9,6 +9,22 @@
         android:id="@+id/formIntroFragment"
         android:name="com.andriawan.divergent_mobile_apps.ui.diagnose.FormIntroFragment"
         android:label="fragment_form_intro_diagnose"
-        tools:layout="@layout/fragment_form_intro_diagnose" />
+        tools:layout="@layout/fragment_form_intro_diagnose" >
+        <action
+            android:id="@+id/action_formIntroFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.diagnose.QuestionFragment"
+        android:label="fragment_question_diagnose"
+        tools:layout="@layout/fragment_question_diagnose">
+
+        <action
+            android:id="@+id/action_formQuestion_closeAllPage"
+            app:popUpTo="@id/nav_graph_diagnose"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
 </navigation>

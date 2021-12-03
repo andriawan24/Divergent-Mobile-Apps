@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="desc"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="24sp"
+            tools:text="Testing"
+            android:fontFamily="@font/manrope_semibold"
+            android:textColor="@color/custom_color_grey"
+            android:text="@{title}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/custom_color_grey"
+            tools:text="Testing"
+            android:fontFamily="@font/manrope_regular"
+            android:layout_marginTop="20dp"
+            android:text="@{desc}"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/no_button"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_height="60dp"
+                app:elevation="0dp"
+                android:layout_marginEnd="40dp"
+                android:text="@string/cancel"
+                android:textColor="@color/custom_color_purple"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                app:backgroundTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/yes_button"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_height="60dp"
+                app:elevation="0dp"
+                android:text="@string/yes"
+                android:layout_marginStart="40dp"
+                app:cornerRadius="8dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/custom_color_purple" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

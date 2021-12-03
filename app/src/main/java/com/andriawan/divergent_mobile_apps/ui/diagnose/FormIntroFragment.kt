@@ -6,6 +6,7 @@ import androidx.navigation.navGraphViewModels
 import com.andriawan.divergent_mobile_apps.R
 import com.andriawan.divergent_mobile_apps.base.BaseFragment
 import com.andriawan.divergent_mobile_apps.databinding.FragmentFormIntroDiagnoseBinding
+import com.andriawan.divergent_mobile_apps.utils.ConfirmDialog
 import com.andriawan.divergent_mobile_apps.utils.DialogBase
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.shashank.sony.fancytoastlib.FancyToast
@@ -20,6 +21,7 @@ class FormIntroFragment : BaseFragment<FragmentFormIntroDiagnoseBinding, SharedD
     }
 
     private lateinit var dialogBase: DialogBase
+    private lateinit var confirmDialog: ConfirmDialog
 
     override fun onInitViews() {
         super.onInitViews()
@@ -39,6 +41,12 @@ class FormIntroFragment : BaseFragment<FragmentFormIntroDiagnoseBinding, SharedD
             }
 
             dialogBase.dismiss()
+        }
+
+        confirmDialog = ConfirmDialog(requireContext(), layoutInflater)
+        confirmDialog.setOnConfirmClicked {
+            findNavController().navigateUp()
+            confirmDialog.dismiss()
         }
     }
 
@@ -64,6 +72,19 @@ class FormIntroFragment : BaseFragment<FragmentFormIntroDiagnoseBinding, SharedD
                 is NetworkResult.Error -> {
                     dialogBase.updateState(Pair(DialogBase.ERROR, it.message))
                 }
+            }
+        })
+
+        viewModel.nextClicked.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                findNavController().navigate(FormIntroFragmentDirections
+                    .actionFormIntroFragmentToQuestionFragment())
+            }
+        })
+
+        viewModel.cancelClicked.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                confirmDialog.showDialog("Are you sure?", "You will lose your answer data")
             }
         })
     }

@@ -40,8 +40,6 @@
     <string name="save">Save</string>
     <string name="logout">Logout</string>
     <string name="hint_update_password">Enter your new password (Optional)</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_intro_diagnose">First, tell us the detail of your child</string>
     <string name="subtitle_diagnose">Takes less than 2 minutes to fill out the information needed to diagnose.</string>
     <string name="full_name">Full Name</string>
@@ -50,4 +48,10 @@
     <string name="hint_age">Enter your kid\'s age</string>
     <string name="cancel">Cancel</string>
     <string name="next_step">Next Step</string>
+    <string name="diagnose_question">Diagnose Question</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="next">Next</string>
+    <string name="question_number">Question %1$d/%2$d</string>
+    <string name="submit_diagnose">Submit</string>
 </resources>

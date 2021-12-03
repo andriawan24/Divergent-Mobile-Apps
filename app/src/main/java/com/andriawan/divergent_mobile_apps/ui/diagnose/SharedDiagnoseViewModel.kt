@@ -19,6 +19,7 @@ import com.andriawan.divergent_mobile_apps.utils.SingleEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import timber.log.Timber
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -37,8 +38,46 @@ class SharedDiagnoseViewModel @Inject constructor(
     private val _showToast = MutableLiveData<SingleEvents<String>>()
     val showToast: LiveData<SingleEvents<String>> = _showToast
 
+    private val _cancelClicked = MutableLiveData<SingleEvents<Boolean>>()
+    val cancelClicked: LiveData<SingleEvents<Boolean>> = _cancelClicked
+
+    private val _nextClicked = MutableLiveData<SingleEvents<Boolean>>()
+    val nextClicked: LiveData<SingleEvents<Boolean>> = _nextClicked
+
+    private val _listClicked = mutableListOf<Int>()
+
     init {
         _errorForm.value = DiagnoseErrorForm()
+    }
+
+    fun answerYes(symptomsId: Int) {
+        if (!_listClicked.contains(symptomsId)) {
+            _listClicked.add(symptomsId)
+        }
+        Timber.d("List clicked id $_listClicked")
+    }
+
+    fun answerNo(symptomsId: Int) {
+        if (_listClicked.contains(symptomsId)) {
+            _listClicked.remove(symptomsId)
+        }
+        Timber.d("List clicked id $_listClicked")
+    }
+
+    fun cancel() {
+        _cancelClicked.value = SingleEvents(true)
+    }
+
+    fun showToast(msg: String) {
+        _showToast.value = SingleEvents(msg)
+    }
+
+    fun next(isSubmit: Boolean = false) {
+        if (isSubmit) {
+            _showToast.value = SingleEvents("Submit")
+        } else {
+            _nextClicked.value = SingleEvents(true)
+        }
     }
 
     fun getSymptoms() = viewModelScope.launch {
@@ -129,7 +168,7 @@ class SharedDiagnoseViewModel @Inject constructor(
             _errorForm.value = it
 
             if (valid) {
-                _showToast.value = SingleEvents("Next Success")
+                _nextClicked.value = SingleEvents(true)
             }
         }
     }
