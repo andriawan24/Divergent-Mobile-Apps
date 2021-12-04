@@ -46,12 +46,12 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
                 i.setPackage("com.whatsapp")
                 i.data = Uri.parse(url)
                 if (i.resolveActivity(packageManager) != null) {
-                    startActivity(i)
+                    requireActivity().startActivity(i)
                 } else {
                     showToast("You don't have whatsapp installed", FancyToast.WARNING)
                 }
             } catch (e: Exception) {
-                showToast("You don't have whatsapp installed", FancyToast.WARNING)
+                showToast("Unknown error ${e.message}", FancyToast.ERROR)
                 Timber.e(e)
             }
         }
