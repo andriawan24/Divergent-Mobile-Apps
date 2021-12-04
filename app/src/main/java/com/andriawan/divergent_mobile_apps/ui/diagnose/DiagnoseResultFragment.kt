@@ -10,17 +10,12 @@ import com.andriawan.divergent_mobile_apps.databinding.FragmentDiagnoseResultBin
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Intent
-import android.widget.Toast
-
-import com.andriawan.divergent_mobile_apps.MainActivity
-
-import android.content.pm.PackageManager
-import android.content.pm.PackageManager.NameNotFoundException
-
 import android.net.Uri
 import com.andriawan.divergent_mobile_apps.utils.Constants.Companion.PHONE_NUMBER
 import com.shashank.sony.fancytoastlib.FancyToast
-
+import timber.log.Timber
+import java.lang.Exception
+import java.net.URLEncoder
 
 @AndroidEntryPoint
 class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, SharedDiagnoseViewModel>() {
@@ -40,16 +35,24 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
         binding.lifecycleOwner = this
 
         binding.consultMaterialButton.setOnClickListener {
-            val url = "https://api.whatsapp.com/send?phone=$PHONE_NUMBER"
             try {
-                val pm = requireContext().packageManager
-                pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES)
+                val packageManager = requireActivity().packageManager
                 val i = Intent(Intent.ACTION_VIEW)
+                val url =
+                    "https://api.whatsapp.com/send?phone=$PHONE_NUMBER&text=" + URLEncoder.encode(
+                        "Hi, I'd like to schedule a consultation",
+                        "UTF-8"
+                    )
+                i.setPackage("com.whatsapp")
                 i.data = Uri.parse(url)
-                startActivity(i)
-            } catch (e: NameNotFoundException) {
-                showToast("You don't have whatsapp installed on your phone", FancyToast.WARNING)
-                e.printStackTrace()
+                if (i.resolveActivity(packageManager) != null) {
+                    startActivity(i)
+                } else {
+                    showToast("You don't have whatsapp installed", FancyToast.WARNING)
+                }
+            } catch (e: Exception) {
+                showToast("You don't have whatsapp installed", FancyToast.WARNING)
+                Timber.e(e)
             }
         }
 
