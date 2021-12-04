@@ -36,17 +36,17 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
 
         binding.consultMaterialButton.setOnClickListener {
             try {
-                val packageManager = requireActivity().packageManager
+                val packageManager = requireContext().packageManager
                 val i = Intent(Intent.ACTION_VIEW)
                 val url =
-                    "https://api.whatsapp.com/send?phone=$PHONE_NUMBER&text=" + URLEncoder.encode(
+                    "whatsapp://send?phone=$PHONE_NUMBER&text=" + URLEncoder.encode(
                         "Hi, I'd like to schedule a consultation",
                         "UTF-8"
                     )
                 i.setPackage("com.whatsapp")
                 i.data = Uri.parse(url)
                 if (i.resolveActivity(packageManager) != null) {
-                    requireActivity().startActivity(i)
+                    requireContext().startActivity(i)
                 } else {
                     showToast("You don't have whatsapp installed", FancyToast.WARNING)
                 }

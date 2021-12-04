@@ -1,10 +1,12 @@
 package com.andriawan.divergent_mobile_apps.utils
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.webkit.MimeTypeMap
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.andriawan.divergent_mobile_apps.BuildConfig
@@ -12,6 +14,9 @@ import com.andriawan.divergent_mobile_apps.R
 import com.andriawan.divergent_mobile_apps.models.auth.response.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 object BindingAdapter {
 
@@ -75,5 +80,26 @@ object BindingAdapter {
     @JvmStatic
     fun ImageView.bindImageViewResource(imageViewResource: Drawable) {
         this.setImageDrawable(imageViewResource)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    @BindingAdapter("formatDateTime")
+    @JvmStatic
+    fun TextView.formatDateTime(inputTime: String) {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ")
+
+        var date: Date? = null
+        try {
+            date = simpleDateFormat.parse(inputTime)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        if (date == null) {
+            this.text = ""
+        } else {
+            val convertFormatDate = SimpleDateFormat("MMM d, yyyy")
+            this.text = convertFormatDate.format(date)
+        }
     }
 }

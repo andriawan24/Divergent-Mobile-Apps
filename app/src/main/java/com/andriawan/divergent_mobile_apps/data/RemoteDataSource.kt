@@ -7,6 +7,7 @@ import com.andriawan.divergent_mobile_apps.models.auth.response.LoginResponse
 import com.andriawan.divergent_mobile_apps.models.articles.ArticleResponse
 import com.andriawan.divergent_mobile_apps.models.diagnose.PostDiagnose
 import com.andriawan.divergent_mobile_apps.models.diagnose.response.DiagnoseResponse
+import com.andriawan.divergent_mobile_apps.models.history_diagnose.HistoryDiagnoseResponse
 import com.andriawan.divergent_mobile_apps.models.profile.PostProfile
 import com.andriawan.divergent_mobile_apps.models.profile.response.UpdateProfileResponse
 import com.andriawan.divergent_mobile_apps.models.symptoms.SymptomsResponse
@@ -40,5 +41,9 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun diagnose(postDiagnose: PostDiagnose): Response<DiagnoseResponse> {
         return divergentApi.diagnose(postDiagnose)
+    }
+
+    suspend fun diagnoseHistories(sort: String): Response<HistoryDiagnoseResponse> {
+        return divergentApi.diagnoseHistories(sort)
     }
 }

@@ -6,6 +6,7 @@ import com.andriawan.divergent_mobile_apps.models.auth.PostRegister
 import com.andriawan.divergent_mobile_apps.models.articles.ArticleResponse
 import com.andriawan.divergent_mobile_apps.models.diagnose.PostDiagnose
 import com.andriawan.divergent_mobile_apps.models.diagnose.response.DiagnoseResponse
+import com.andriawan.divergent_mobile_apps.models.history_diagnose.HistoryDiagnoseResponse
 import com.andriawan.divergent_mobile_apps.models.profile.PostProfile
 import com.andriawan.divergent_mobile_apps.models.profile.response.UpdateProfileResponse
 import com.andriawan.divergent_mobile_apps.models.symptoms.SymptomsResponse
@@ -30,4 +31,7 @@ interface DivergentApi {
 
     @POST("diagnose")
     suspend fun diagnose(@Body postDiagnose: PostDiagnose): Response<DiagnoseResponse>
+
+    @GET("diagnose/histories")
+    suspend fun diagnoseHistories(@Query("sort") sort: String): Response<HistoryDiagnoseResponse>
 }
