@@ -9,5 +9,7 @@ class Constants {
         const val PREFERENCE_ACCESS_TOKEN = "access_token"
         const val PREFERENCE_USER_PROFILE = "user_profile"
         const val PREFERENCE_IS_LOGGED_IN = "is_logged_in"
+
+        const val PHONE_NUMBER = "+6288224381926"
     }
 }

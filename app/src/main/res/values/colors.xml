@@ -10,10 +10,15 @@
 
     <color name="custom_color_purple">#5D55FF</color>
     <color name="custom_color_light_purple">#6C72CB</color>
+    <color name="custom_color_light_purple_card">#E2E3FE</color>
     <color name="custom_color_pink">#CB69C1</color>
+    <color name="custom_color_subtle_pink">#F3E6F5</color>
     <color name="custom_color_subtle_grey">#F3F4F8</color>
     <color name="custom_color_background">#FAFCFE</color>
     <color name="custom_color_subtle_blue">#D5D5EB</color>
     <color name="custom_color_grey">#464E56</color>
     <color name="subtitle_text_color">#B2B1B9</color>
+    <color name="custom_color_subtle_green">#DAF6EC</color>
+    <color name="custom_color_green">#23D483</color>
+    <color name="light_pink">#26CB69C1</color>
 </resources>

@@ -24,6 +24,20 @@
             android:id="@+id/action_formQuestion_closeAllPage"
             app:popUpTo="@id/nav_graph_diagnose"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_questionFragment_to_diagnoseResultFragment"
+            app:destination="@id/diagnoseResultFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/diagnoseResultFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.diagnose.DiagnoseResultFragment"
+        android:label="DiagnoseResultFragment">
+
+        <action
+            android:id="@+id/action_diagnoseResult_closeAllPage"
+            app:popUpTo="@id/nav_graph_diagnose"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
