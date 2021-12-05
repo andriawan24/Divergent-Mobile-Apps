@@ -36,7 +36,6 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
 
         binding.consultMaterialButton.setOnClickListener {
             try {
-                val packageManager = requireContext().packageManager
                 val i = Intent(Intent.ACTION_VIEW)
                 val url =
                     "whatsapp://send?phone=$PHONE_NUMBER&text=" + URLEncoder.encode(
@@ -45,11 +44,7 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
                     )
                 i.setPackage("com.whatsapp")
                 i.data = Uri.parse(url)
-                if (i.resolveActivity(packageManager) != null) {
-                    requireContext().startActivity(i)
-                } else {
-                    showToast("You don't have whatsapp installed", FancyToast.WARNING)
-                }
+                requireContext().startActivity(i)
             } catch (e: Exception) {
                 showToast("Unknown error ${e.message}", FancyToast.ERROR)
                 Timber.e(e)
