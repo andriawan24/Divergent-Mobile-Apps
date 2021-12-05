@@ -77,6 +77,9 @@
         <action
             android:id="@+id/action_homeFragment_to_formIntroFragment"
             app:destination="@id/nav_graph_diagnose" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
@@ -90,5 +93,10 @@
     </fragment>
 
     <include app:graph="@navigation/nav_graph_diagnose" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 
 </navigation>

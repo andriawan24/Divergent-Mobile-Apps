@@ -86,7 +86,7 @@ object BindingAdapter {
     @BindingAdapter("formatDateTime")
     @JvmStatic
     fun TextView.formatDateTime(inputTime: String) {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.000000Z'")
 
         var date: Date? = null
         try {

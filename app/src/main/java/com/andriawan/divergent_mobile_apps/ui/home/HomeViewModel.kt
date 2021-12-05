@@ -53,6 +53,9 @@ class HomeViewModel @Inject constructor(
     private val _goToDiagnose = MutableLiveData<SingleEvents<Boolean>>()
     val goToDiagnose: LiveData<SingleEvents<Boolean>> = _goToDiagnose
 
+    private val _goToDiagnoseHistory = MutableLiveData<SingleEvents<Boolean>>()
+    val goToDiagnoseHistory: LiveData<SingleEvents<Boolean>> = _goToDiagnoseHistory
+
     init {
         getArticles()
     }
@@ -147,7 +150,7 @@ class HomeViewModel @Inject constructor(
             }
 
             "history" -> {
-                _showToast.postValue(SingleEvents("History Clicked"))
+                _goToDiagnoseHistory.value = SingleEvents(true)
             }
 
             "wiki" -> {
