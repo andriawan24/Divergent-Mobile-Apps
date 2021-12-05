@@ -11,9 +11,10 @@
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/custom_dialog_base.xml" value="0.16805555555555557" />
         <entry key="app/src/main/res/layout/custom_dialog_confirm.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_detail_diagnose.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_diagnose_result.xml" value="0.1995172968624296" />
         <entry key="app/src/main/res/layout/fragment_form_intro_diagnose.xml" value="0.2520833333333333" />
-        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_loading.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/layout/item_articles.xml" value="0.125" />
         <entry key="app/src/main/res/layout/item_diagnose_disease.xml" value="0.40326340326340326" />
         <entry key="app/src/main/res/layout/item_history.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_history_diagnose_disease.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/item_onboarding.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_question_diagnose.xml" value="0.20833333333333334" />
       </map>

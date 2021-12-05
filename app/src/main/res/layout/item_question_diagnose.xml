@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/custom_color_grey"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:fontFamily="@font/manrope_semibold"
             tools:text="Does your child have difficulty controlling emotions, such as irritability and difficulty controlling?"
             android:layout_marginHorizontal="24dp"

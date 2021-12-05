@@ -10,6 +10,7 @@ import com.andriawan.divergent_mobile_apps.base.BaseFragment
 import com.andriawan.divergent_mobile_apps.databinding.FragmentHistoryBinding
 import com.andriawan.divergent_mobile_apps.utils.DialogBase
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +42,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding, HistoryViewModel>()
     }
 
     private fun initRecyclerView() {
-        adapter = HistoryAdapter()
+        adapter = HistoryAdapter(viewModel)
         binding.recyclerHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHistory.adapter = adapter
     }
@@ -68,6 +69,18 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding, HistoryViewModel>()
         viewModel.updateRecyclerView.observe(this, {
             it.getContentIfNotHandled()?.let { model ->
                 adapter.setData(model)
+            }
+        })
+
+        viewModel.toDetail.observe(this, {
+            it.getContentIfNotHandled()?.let { consultation ->
+                findNavController()
+                    .navigate(
+                        HistoryFragmentDirections
+                            .actionHistoryFragmentToDetailDiagnoseFragment(
+                                Gson().toJson(consultation)
+                            )
+                    )
             }
         })
 

@@ -40,6 +40,9 @@ class HistoryViewModel @Inject constructor(
     private val _sortSelected = MutableLiveData<SingleEvents<String>>()
     val sortSelected: LiveData<SingleEvents<String>> = _sortSelected
 
+    private val _toDetail = MutableLiveData<SingleEvents<Consultation>>()
+    val toDetail: LiveData<SingleEvents<Consultation>> = _toDetail
+
     fun getHistories(sort: String = HistoryFragment.SORT_NEWEST) = viewModelScope.launch {
         getHistorySafeCall(sort)
     }
@@ -111,5 +114,9 @@ class HistoryViewModel @Inject constructor(
     override fun onButtonClicked(view: View) {
         val button = view as MaterialButton
         _sortSelected.value = SingleEvents(button.text.toString())
+    }
+
+    override fun onModelClicked(consultation: Consultation) {
+        _toDetail.value = SingleEvents(consultation)
     }
 }

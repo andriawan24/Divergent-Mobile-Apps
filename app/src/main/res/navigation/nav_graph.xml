@@ -97,6 +97,18 @@
         android:id="@+id/historyFragment"
         android:name="com.andriawan.divergent_mobile_apps.ui.history.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_detailDiagnoseFragment"
+            app:destination="@id/detailDiagnoseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDiagnoseFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.detail_diagnose.DetailDiagnoseFragment"
+        android:label="DetailDiagnoseFragment" >
+        <argument
+            android:name="data"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

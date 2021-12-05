@@ -4,29 +4,32 @@ import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.andriawan.divergent_mobile_apps.R
 import com.andriawan.divergent_mobile_apps.databinding.ItemHistoryBinding
 import com.andriawan.divergent_mobile_apps.models.history_diagnose.Consultation
+import com.andriawan.divergent_mobile_apps.ui.history.HistoryViewModel
 import com.andriawan.divergent_mobile_apps.utils.BindingAdapter.formatDateTime
 import com.andriawan.divergent_mobile_apps.utils.RecyclerDIffUtil
 
-class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+class HistoryAdapter(val viewModel: HistoryViewModel) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     private var historyList = emptyList<Consultation>()
 
     class ViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(consultation: Consultation, size: Int) {
+        fun bind(consultation: Consultation, size: Int, position: Int, viewModel: HistoryViewModel) {
+            binding.model = consultation
+            binding.listener = viewModel
+
             binding.nameAgeTextView.apply {
                 text = context.getString(R.string.name_age, consultation.name, consultation.age)
             }
 
             binding.createdDateTextView.formatDateTime(consultation.created_at)
 
-            if (size <= 1) {
+            if (size <= 1 || position == size - 1) {
                 binding.divider.visibility = GONE
             } else {
                 binding.divider.visibility = VISIBLE
@@ -47,7 +50,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val history = historyList[position]
-        holder.bind(history, historyList.size)
+        holder.bind(history, historyList.size, position, viewModel)
     }
 
     override fun getItemCount(): Int = historyList.size
