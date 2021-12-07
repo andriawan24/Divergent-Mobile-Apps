@@ -10,6 +10,7 @@ import com.andriawan.divergent_mobile_apps.databinding.ItemQuestionDiagnoseBindi
 import com.andriawan.divergent_mobile_apps.models.symptoms.response.Symptom
 import com.andriawan.divergent_mobile_apps.ui.diagnose.SharedDiagnoseViewModel
 import com.andriawan.divergent_mobile_apps.utils.RecyclerDIffUtil
+import timber.log.Timber
 
 class QuestionDiagnoseAdapter(
     private val viewModel: SharedDiagnoseViewModel

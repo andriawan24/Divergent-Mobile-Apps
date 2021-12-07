@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.viewbinding.ViewBinding
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.shashank.sony.fancytoastlib.FancyToast
 
 abstract class BaseFragment<VB: ViewBinding, VM: AndroidViewModel>: Fragment() {

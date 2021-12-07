@@ -55,7 +55,8 @@ class SharedDiagnoseViewModel @Inject constructor(
     private val _postModel = MutableLiveData(PostDiagnose())
     val postModel: LiveData<PostDiagnose> = _postModel
 
-    private val _listClicked = mutableListOf<Int>()
+    val _listClicked = mutableListOf<Int>()
+    val _listUnClicked = mutableListOf<Int>()
 
     init {
         _errorForm.value = DiagnoseErrorForm()
@@ -64,15 +65,21 @@ class SharedDiagnoseViewModel @Inject constructor(
     fun answerYes(symptomsId: Int) {
         if (!_listClicked.contains(symptomsId)) {
             _listClicked.add(symptomsId)
+            if (_listUnClicked.contains(symptomsId)) {
+                _listUnClicked.remove(symptomsId)
+            }
         }
-        Timber.d("List clicked id $_listClicked")
+        Timber.d("List clicked id $_listClicked list unclicked id $_listUnClicked")
     }
 
     fun answerNo(symptomsId: Int) {
-        if (_listClicked.contains(symptomsId)) {
-            _listClicked.remove(symptomsId)
+        if (!_listUnClicked.contains(symptomsId)) {
+            _listUnClicked.add(symptomsId)
+            if (_listClicked.contains(symptomsId)) {
+                _listClicked.remove(symptomsId)
+            }
         }
-        Timber.d("List clicked id $_listClicked")
+        Timber.d("List clicked id $_listClicked list unclicked id $_listUnClicked")
     }
 
     fun cancel() {

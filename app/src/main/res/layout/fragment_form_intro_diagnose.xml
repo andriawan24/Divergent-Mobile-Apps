@@ -133,7 +133,7 @@
                         android:fontFamily="@font/manrope_regular"
                         android:inputType="number"
                         android:lines="1"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>

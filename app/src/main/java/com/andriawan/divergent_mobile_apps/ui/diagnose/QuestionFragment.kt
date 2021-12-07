@@ -41,6 +41,14 @@ class QuestionFragment : BaseFragment<FragmentQuestionDiagnoseBinding, SharedDia
                 binding.questionViewPager.currentItem = binding.questionViewPager.currentItem - 1
             }
         }
+
+        binding.backImageView.setOnClickListener {
+            if (positionNow == 0) {
+                viewModel.cancel()
+            } else {
+                binding.questionViewPager.currentItem = binding.questionViewPager.currentItem - 1
+            }
+        }
     }
 
     private fun initDialog() {

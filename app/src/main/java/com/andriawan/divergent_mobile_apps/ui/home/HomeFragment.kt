@@ -9,6 +9,10 @@ import com.andriawan.divergent_mobile_apps.databinding.FragmentHomeBinding
 import com.andriawan.divergent_mobile_apps.ui.login.LoginFragmentDirections
 import com.andriawan.divergent_mobile_apps.utils.DialogBase
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private lateinit var adapter: ArticleAdapter
     private lateinit var dialogBase: DialogBase
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onInitViews() {
         super.onInitViews()
@@ -29,6 +34,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         initDialog()
 
         binding.listener = viewModel
+        firebaseAnalytics = Firebase.analytics
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, HomeFragment::class.java.name)
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "HomeFragment")
+        }
     }
 
     override fun onResume() {
@@ -53,6 +63,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             it.getContentIfNotHandled()?.let {
                 findNavController().navigate(HomeFragmentDirections
                     .actionHomeFragmentToUpdateProfileFragment())
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT) {
+                    param(FirebaseAnalytics.Param.CONTENT, "Profile Menu")
+                    param(FirebaseAnalytics.Param.CONTENT_TYPE, "menu")
+                }
             }
         })
 
