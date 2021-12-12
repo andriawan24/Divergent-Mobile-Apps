@@ -54,8 +54,12 @@ object BindingAdapter {
     @BindingAdapter("imageViewUrl")
     @JvmStatic
     fun ImageView.bindImageViewUrl(imageViewUrl: String?) {
-        imageViewUrl?.let {
-            GlideHelper.showThumbnail(it, this, context)
+        if (imageViewUrl != null && imageViewUrl.isNotEmpty()) {
+            imageViewUrl.let {
+                GlideHelper.showThumbnail("${BuildConfig.BASE_URL_IMAGE}article/$it", this, context)
+            }
+        } else {
+            this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.dummy_article))
         }
     }
 
@@ -87,6 +91,27 @@ object BindingAdapter {
     @JvmStatic
     fun TextView.formatDateTime(inputTime: String) {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.000000Z'")
+
+        var date: Date? = null
+        try {
+            date = simpleDateFormat.parse(inputTime)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        if (date == null) {
+            this.text = ""
+        } else {
+            val convertFormatDate = SimpleDateFormat("MMM d, yyyy")
+            this.text = convertFormatDate.format(date)
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    @BindingAdapter("formatDateTimeArticle")
+    @JvmStatic
+    fun TextView.formatDateTimeArticle(inputTime: String) {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
         var date: Date? = null
         try {

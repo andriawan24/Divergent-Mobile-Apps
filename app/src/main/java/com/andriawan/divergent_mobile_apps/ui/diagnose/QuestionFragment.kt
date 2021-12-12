@@ -127,7 +127,7 @@ class QuestionFragment : BaseFragment<FragmentQuestionDiagnoseBinding, SharedDia
 
         viewModel.showToast.observe(this, {
             it.getContentIfNotHandled()?.let { msg ->
-                showToast(msg, FancyToast.SUCCESS)
+                showToast(msg, FancyToast.WARNING)
             }
         })
 

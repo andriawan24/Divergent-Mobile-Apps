@@ -5,13 +5,17 @@
       <map>
         <entry key="app/src/main/res/drawable/dots_active.xml" value="0.23935185185185184" />
         <entry key="app/src/main/res/drawable/dots_inactive.xml" value="0.23935185185185184" />
+        <entry key="app/src/main/res/drawable/ic_article.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/drawable/ic_check.xml" value="0.18981481481481483" />
         <entry key="app/src/main/res/drawable/ic_doctor_card.xml" value="0.17224080267558528" />
         <entry key="app/src/main/res/drawable/img_default.xml" value="0.1986111111111111" />
+        <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.19814814814814816" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/custom_dialog_base.xml" value="0.16805555555555557" />
         <entry key="app/src/main/res/layout/custom_dialog_confirm.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_articles.xml" value="0.18284850774461656" />
+        <entry key="app/src/main/res/layout/fragment_detail_article.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/fragment_detail_diagnose.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_diagnose_result.xml" value="0.1995172968624296" />
         <entry key="app/src/main/res/layout/fragment_form_intro_diagnose.xml" value="0.2520833333333333" />
@@ -23,7 +27,8 @@
         <entry key="app/src/main/res/layout/fragment_question_diagnose.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.18984375" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/item_articles.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/item_articles.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_breaking_news.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/item_diagnose_disease.xml" value="0.40326340326340326" />
         <entry key="app/src/main/res/layout/item_history.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_history_diagnose_disease.xml" value="0.2520833333333333" />

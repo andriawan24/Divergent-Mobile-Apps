@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.andriawan.divergent_mobile_apps.adapters.ArticleAdapter
 import com.andriawan.divergent_mobile_apps.base.BaseFragment
 import com.andriawan.divergent_mobile_apps.databinding.FragmentHomeBinding
+import com.andriawan.divergent_mobile_apps.ui.articles.ArticlesFragmentDirections
 import com.andriawan.divergent_mobile_apps.ui.login.LoginFragmentDirections
 import com.andriawan.divergent_mobile_apps.utils.DialogBase
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
@@ -13,6 +14,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,7 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun initRecyclerView() {
-        adapter = ArticleAdapter()
+        adapter = ArticleAdapter(viewModel)
         binding.articlesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.articlesRecyclerView.adapter = adapter
     }
@@ -92,6 +94,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
         })
 
+        viewModel.goToArticles.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                findNavController()
+                    .navigate(
+                        HomeFragmentDirections.actionHomeFragmentToArticlesFragment()
+                    )
+            }
+        })
+
         viewModel.showToast.observe(this, {
             it.getContentIfNotHandled()?.let { message ->
                 showToast(message, FancyToast.SUCCESS)
@@ -117,6 +128,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.updateRecyclerView.observe(this, {
             it.getContentIfNotHandled()?.let { data ->
                 adapter.setData(data)
+            }
+        })
+
+        viewModel.onClickNews.observe(this, {
+            it.getContentIfNotHandled()?.let { article ->
+                val articleJson = Gson().toJson(article)
+                findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToDetailArticleFragment(articleJson)
+                )
             }
         })
     }

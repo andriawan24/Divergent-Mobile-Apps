@@ -80,6 +80,12 @@
         <action
             android:id="@+id/action_homeFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
@@ -108,6 +114,22 @@
         android:label="DetailDiagnoseFragment" >
         <argument
             android:name="data"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.articles.ArticlesFragment"
+        android:label="ArticlesFragment" >
+        <action
+            android:id="@+id/action_articlesFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailArticleFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.detail_article.DetailArticleFragment"
+        android:label="DetailArticleFragment" >
+        <argument
+            android:name="articleJson"
             app:argType="string" />
     </fragment>
 
