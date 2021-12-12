@@ -112,7 +112,7 @@ class HomeViewModel @Inject constructor(
             response.isSuccessful -> {
                 val loginResponse = response.body()
                 loginResponse?.data?.articles?.let { articles ->
-                    _updateRecyclerView.postValue(SingleEvents(articles))
+                    _updateRecyclerView.postValue(SingleEvents(articles.take(3)))
                 }
                 NetworkResult.Success(loginResponse!!)
             }
