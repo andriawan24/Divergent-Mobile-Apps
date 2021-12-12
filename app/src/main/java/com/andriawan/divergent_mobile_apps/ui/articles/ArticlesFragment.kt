@@ -21,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ArticlesFragment : BaseFragment<FragmentArticlesBinding, ArticlesViewModel>() {
@@ -54,7 +55,12 @@ class ArticlesFragment : BaseFragment<FragmentArticlesBinding, ArticlesViewModel
     private fun initTabLayout() {
         binding.tabLayoutCategory.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewModel.getArticles(tab?.tag.toString())
+                Timber.d("Tag is ${tab?.tag}")
+                if (tab?.tag.toString() != "null") {
+                    viewModel.getArticles(tab?.tag.toString())
+                } else {
+                    viewModel.getArticles()
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
