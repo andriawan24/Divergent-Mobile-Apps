@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_articles.xml" value="0.18284850774461656" />
         <entry key="app/src/main/res/layout/fragment_detail_article.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/fragment_detail_diagnose.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_detail_wiki.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_diagnose_result.xml" value="0.1995172968624296" />
         <entry key="app/src/main/res/layout/fragment_form_intro_diagnose.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.25" />
@@ -27,6 +28,7 @@
         <entry key="app/src/main/res/layout/fragment_question_diagnose.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.18984375" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_wiki.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/item_articles.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_breaking_news.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/item_diagnose_disease.xml" value="0.40326340326340326" />
@@ -34,6 +36,7 @@
         <entry key="app/src/main/res/layout/item_history_diagnose_disease.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/item_onboarding.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_question_diagnose.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/item_wiki.xml" value="0.2520833333333333" />
       </map>
     </option>
   </component>

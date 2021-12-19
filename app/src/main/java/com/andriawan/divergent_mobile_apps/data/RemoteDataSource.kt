@@ -11,7 +11,6 @@ import com.andriawan.divergent_mobile_apps.models.history_diagnose.HistoryDiagno
 import com.andriawan.divergent_mobile_apps.models.profile.PostProfile
 import com.andriawan.divergent_mobile_apps.models.profile.response.UpdateProfileResponse
 import com.andriawan.divergent_mobile_apps.models.symptoms.SymptomsResponse
-import com.andriawan.divergent_mobile_apps.models.symptoms.response.Symptom
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -35,8 +34,8 @@ class RemoteDataSource @Inject constructor(
         return divergentApi.updateProfile(postUpdateProfile)
     }
 
-    suspend fun getSymptoms(): Response<SymptomsResponse> {
-        return divergentApi.getSymptoms()
+    suspend fun getSymptoms(fieldMap: Map<String, String>): Response<SymptomsResponse> {
+        return divergentApi.getSymptoms(fieldMap)
     }
 
     suspend fun diagnose(postDiagnose: PostDiagnose): Response<DiagnoseResponse> {

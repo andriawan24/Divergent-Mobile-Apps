@@ -27,7 +27,7 @@ interface DivergentApi {
     suspend fun updateProfile(@Body postProfile: PostProfile): Response<UpdateProfileResponse>
 
     @GET("symptoms")
-    suspend fun getSymptoms(): Response<SymptomsResponse>
+    suspend fun getSymptoms(@QueryMap params: Map<String, String>): Response<SymptomsResponse>
 
     @POST("diagnose")
     suspend fun diagnose(@Body postDiagnose: PostDiagnose): Response<DiagnoseResponse>

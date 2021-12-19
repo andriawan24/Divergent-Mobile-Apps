@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailArticleFragment"
             app:destination="@id/detailArticleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_wikiFragment"
+            app:destination="@id/wikiFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
@@ -130,6 +133,22 @@
         android:label="DetailArticleFragment" >
         <argument
             android:name="articleJson"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/wikiFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.wiki.WikiFragment"
+        android:label="WikiFragment" >
+        <action
+            android:id="@+id/action_wikiFragment_to_detailWikiFragment"
+            app:destination="@id/detailWikiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailWikiFragment"
+        android:name="com.andriawan.divergent_mobile_apps.ui.detail_wiki.DetailWikiFragment"
+        android:label="DetailWikiFragment" >
+        <argument
+            android:name="data"
             app:argType="string" />
     </fragment>
 

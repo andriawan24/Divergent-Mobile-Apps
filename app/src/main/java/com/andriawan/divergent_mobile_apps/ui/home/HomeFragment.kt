@@ -103,6 +103,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
         })
 
+        viewModel.goToWiki.observe(this, {
+            it.getContentIfNotHandled()?.let {
+                findNavController()
+                    .navigate(
+                        HomeFragmentDirections.actionHomeFragmentToWikiFragment()
+                    )
+            }
+        })
+
         viewModel.showToast.observe(this, {
             it.getContentIfNotHandled()?.let { message ->
                 showToast(message, FancyToast.SUCCESS)
