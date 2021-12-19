@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/custom_color_background"
+        tools:context=".ui.history.HistoryFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/custom_color_background"
+            app:elevation="0dp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <ImageView
+                    android:id="@+id/back_imageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/app_name"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/custom_color_grey"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:textSize="16sp"
+                    android:text="@string/news" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/breaking_news"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:textColor="@color/custom_color_grey"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginHorizontal="24dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/breakingNews_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_breaking_news"
+                    android:overScrollMode="never"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    tools:layoutManager="LinearLayoutManager" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutCategory"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="12dp"
+                    app:tabMode="scrollable"
+                    app:tabBackground="@color/custom_color_background"
+                    app:tabTextColor="#B2B1B9"
+                    app:tabPaddingStart="24dp"
+                    app:tabPaddingEnd="24dp"
+                    android:layout_marginHorizontal="24dp"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabIndicatorHeight="40dp"
+                    android:layout_height="40dp">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="all"
+                        android:text="@string/all" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/articles_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:layout_marginTop="12dp"
+                    tools:listitem="@layout/item_articles" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/emptyView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="24dp"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_article"
+                        app:tint="@color/custom_color_purple"
+                        android:layout_marginBottom="18dp"
+                        android:contentDescription="@string/app_name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@string/no_data" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

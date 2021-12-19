@@ -63,4 +63,12 @@
     <string name="longest">Longest</string>
     <string name="by_name">By Name</string>
     <string name="default_notification_channel_id">1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news">News</string>
+    <string name="breaking_news">Breaking News</string>
+    <string name="all">All</string>
+    <string name="detail">Detail</string>
+    <string name="no_data">No Data</string>
+    <string name="view_all">View All</string>
 </resources>
