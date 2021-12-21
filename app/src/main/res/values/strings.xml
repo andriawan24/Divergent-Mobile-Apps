@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Divergent Mobile Apps</string>
+    <string name="app_name">MEND</string>
     <string name="title_slider_1">Find out about your child mental care in a click</string>
     <string name="subtitle_slider_1">Know more about your child’s health, watch out for the signs</string>
     <string name="title_slider_2">We will help you find the abnormality</string>
@@ -71,5 +71,8 @@
     <string name="no_data">No Data</string>
     <string name="view_all">View All</string>
     <string name="read_this">Read This</string>
-    <string name="hint_general">Type something here...</string>
+    <string name="hint_general">Type something here…</string>
+    <string name="app_title"><b>M</b>entality <b>D</b>isorders <b>D</b>etection for Chil<b>d</b></string>
+    <string name="by_divergent_team">By Divergent Team</string>
+    <string name="version_txt">Version %1$s</string>
 </resources>
