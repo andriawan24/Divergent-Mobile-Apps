@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="symptom"
+            type="com.andriawan.divergent_mobile_apps.models.symptoms.response.Symptom" />
+        <variable
+            name="listener"
+            type="com.andriawan.divergent_mobile_apps.ui.wiki.WikiListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/topView_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="16dp"
+            android:foreground="?android:selectableItemBackground"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+                        android:id="@+id/diseaseName_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@{symptom.name}"
+                        android:textColor="@color/custom_color_grey"
+                        android:textSize="16sp"
+                        tools:text="Phobia Social" />
+
+                    <TextView
+                        android:id="@+id/diseaseDescription_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/manrope_regular"
+                        tools:text="Possibility 20%" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/signIn_materialButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:backgroundTint="@color/custom_color_purple"
+                        app:cornerRadius="8dp"
+                        android:onClick="@{()->listener.onCardClicked(symptom)}"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/manrope_semibold"
+                        app:elevation="4dp"
+                        android:text="@string/read_this" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

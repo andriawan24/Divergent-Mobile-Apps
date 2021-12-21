@@ -15,7 +15,6 @@ import com.andriawan.divergent_mobile_apps.models.diagnose.PostDiagnose
 import com.andriawan.divergent_mobile_apps.models.diagnose.form.DiagnoseErrorForm
 import com.andriawan.divergent_mobile_apps.models.diagnose.response.DiagnoseResponse
 import com.andriawan.divergent_mobile_apps.models.symptoms.SymptomsResponse
-import com.andriawan.divergent_mobile_apps.models.symptoms.response.Symptom
 import com.andriawan.divergent_mobile_apps.utils.NetworkResult
 import com.andriawan.divergent_mobile_apps.utils.SingleEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -160,7 +159,7 @@ class SharedDiagnoseViewModel @Inject constructor(
         if (hasConnection) {
             _symptoms.value = NetworkResult.Loading()
             try {
-                val response = repository.remote.getSymptoms()
+                val response = repository.remote.getSymptoms(mapOf())
                 _symptoms.value = handleSymptomsResponse(response)
             } catch (e: Exception) {
                 _symptoms.value = NetworkResult.Error("Something went wrong ${e.message}")
