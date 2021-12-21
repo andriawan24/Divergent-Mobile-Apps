@@ -15,8 +15,8 @@ android {
         applicationId "com.andriawan.divergent_mobile_apps"
         minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName "1.0.0.147-dev"
+        versionCode 4
+        versionName "1.0.0.148-dev"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
