@@ -70,7 +70,9 @@ class DiagnoseResultFragment : BaseFragment<FragmentDiagnoseResultBinding, Share
             when (it) {
                 is NetworkResult.Success -> {
                     it.data?.data?.diseases_possibilities?.let { models ->
-                        adapter.setData(models.take(3))
+                        adapter.setData(models.sortedByDescending { model ->
+                            model.possibility.replace("%", "").toDouble()
+                        }.take(3))
                     }
                 }
 
