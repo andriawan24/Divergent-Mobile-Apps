@@ -55,7 +55,9 @@ class DetailDiagnoseFragment : BaseFragment<FragmentDetailDiagnoseBinding, Detai
         super.onInitObservers()
 
         viewModel.diagnose.observe(this, {
-            adapter.setData(it.results.take(3))
+            adapter.setData(it.results.sortedByDescending { model ->
+                model.possibility.replace("%", "").toDouble()
+            }.take(3))
         })
     }
 }

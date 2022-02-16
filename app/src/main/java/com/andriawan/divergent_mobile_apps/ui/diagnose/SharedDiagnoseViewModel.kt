@@ -54,8 +54,8 @@ class SharedDiagnoseViewModel @Inject constructor(
     private val _postModel = MutableLiveData(PostDiagnose())
     val postModel: LiveData<PostDiagnose> = _postModel
 
-    val _listClicked = mutableListOf<Int>()
-    val _listUnClicked = mutableListOf<Int>()
+    private val _listClicked = mutableListOf<Int>()
+    private val _listUnClicked = mutableListOf<Int>()
 
     init {
         _errorForm.value = DiagnoseErrorForm()
@@ -100,7 +100,11 @@ class SharedDiagnoseViewModel @Inject constructor(
     fun submitDiagnose() = viewModelScope.launch {
         _postModel.value?.let { postMod ->
             postMod.symptoms = _listClicked
-            submitDiagnoseSafeCall(postMod)
+            if (postMod.symptoms.isNotEmpty()) {
+                submitDiagnoseSafeCall(postMod)
+            } else {
+                _showToast.postValue(SingleEvents("Diseases not found"))
+            }
         }?:kotlin.run {
             _showToast.value = SingleEvents("Failed to submit")
         }

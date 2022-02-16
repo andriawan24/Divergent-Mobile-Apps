@@ -1,6 +1,8 @@
 package com.andriawan.divergent_mobile_apps.ui.articles
 
 import android.view.View
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -124,11 +126,13 @@ class ArticlesFragment : BaseFragment<FragmentArticlesBinding, ArticlesViewModel
 
         viewModel.updateArticleCategories.observe(this, {
             it.getContentIfNotHandled()?.let { data ->
-                for (category in data) {
-                    val tab = binding.tabLayoutCategory.newTab()
-                    tab.text = category.name
-                    tab.tag = category.id
-                    binding.tabLayoutCategory.addTab(tab)
+                if (binding.tabLayoutCategory.tabCount == 1) {
+                    for (category in data) {
+                        val tab = binding.tabLayoutCategory.newTab()
+                        tab.text = category.name
+                        tab.tag = category.id
+                        binding.tabLayoutCategory.addTab(tab)
+                    }
                 }
             }
         })
